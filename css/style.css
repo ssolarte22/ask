@@ -1,0 +1,182 @@
+/* =============================================
+   PANEL DOCENTE - VERSION CORREGIDA Y MEJORADA
+   ============================================= */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* FUENTE */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+    color: #1e1b4b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: linear-gradient(135deg, #4c1d95, #6d28d9);
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+/* ---------- NAV ---------- */
+nav {
+    background: #ede9fe;
+    border-bottom: 3px solid #4c1d95;
+    padding: 0.8rem 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e1b4b;
+    font-weight: 500;
+    padding: 0.6rem 1.4rem;
+    border-radius: 999px;
+    transition: 0.25s;
+}
+
+nav a:hover {
+    background: #6366f1;
+    color: white;
+}   
+
+nav a.active {
+    background: #1e3a8a;
+    color: white;
+}
+
+/* ---------- SECTION ---------- */
+section {
+    flex: 1;
+    max-width: 1200px; /* 🔥 más compacto */
+    width: 90%;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    background-color: #e7e7e7;
+}
+
+/* TITULOS */
+section h1, section h2, section h3 {
+    color: #4c1d95;
+    margin-bottom: 1rem;
+}
+
+/* TEXTO */
+section p {
+    text-align: justify;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+
+
+/* ---------- TABLAS ---------- */
+table {
+    width: 100%;
+    max-width: 900px; /* 🔥 controla tamaño real */
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* ENCABEZADO */
+th {
+    background: linear-gradient(135deg, #4c1d95, #6d28d9);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* CELDAS */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    word-break: break-word; /* 🔥 evita que se rompa */
+}
+
+/* FILA HOVER */
+tr:hover {
+    background: #f5f3ff;
+}
+
+/* ---------- FORMULARIOS ---------- */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #faf9ff;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid #ddd6fe;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #4c1d95;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #c7d2fe;
+}
+
+input:focus, textarea:focus {
+    border-color: #6366f1;
+    outline: none;
+}
+
+/* ---------- BOTONES ---------- */
+button,
+input[type="submit"],
+input[type="reset"] {
+    background: linear-gradient(135deg, #4c1d95, #6d28d9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    transform: translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    background: #1e1b4b;
+    color: #c7d2fe;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
