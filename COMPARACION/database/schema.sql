@@ -1,0 +1,62 @@
+-- Esquema inicial - MariaDB / MySQL
+-- Ejecutar: mysql -u root -p < database/schema.sql
+
+CREATE DATABASE IF NOT EXISTS entrega_ia
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE entrega_ia;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  login VARCHAR(50) NOT NULL UNIQUE,
+  nombre VARCHAR(120) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  rol ENUM('docente', 'admin') NOT NULL DEFAULT 'docente',
+  videos_generados INT UNSIGNED NOT NULL DEFAULT 0,
+  activo TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_usuarios_rol (rol),
+  INDEX idx_usuarios_activo (activo)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS configuracion (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  clave VARCHAR(80) NOT NULL UNIQUE,
+  valor VARCHAR(255) NOT NULL,
+  updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS cursos (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(60) NOT NULL UNIQUE,
+  titulo VARCHAR(150) NOT NULL,
+  descripcion TEXT NOT NULL,
+  contenido LONGTEXT NULL,
+  orden TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  activo TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_cursos_activo (activo)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS herramientas_ia (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(80) NOT NULL,
+  descripcion TEXT NOT NULL,
+  uso_educativo TEXT NOT NULL,
+  precio VARCHAR(120) NOT NULL,
+  orden TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  activo TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS progreso_docente (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT UNSIGNED NOT NULL,
+  curso_id INT UNSIGNED NOT NULL,
+  completado TINYINT(1) NOT NULL DEFAULT 0,
+  updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uk_progreso (usuario_id, curso_id),
+  CONSTRAINT fk_progreso_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  CONSTRAINT fk_progreso_curso FOREIGN KEY (curso_id) REFERENCES cursos(id) ON DELETE CASCADE
+) ENGINE=InnoDB;

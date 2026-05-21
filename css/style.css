@@ -1,21 +1,20 @@
 /* =============================================
-   PANEL DOCENTE - VERSION CORREGIDA Y MEJORADA
+   PANEL - VERSIÓN ESTRUCTURADA (AZUL, NEGRO, ORO)
    ============================================= */
 
-/* RESET */
+/* RESET Y FUENTE */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Eliminamos redondeados de raíz */
+    border-radius: 0 !important; 
 }
 
-/* FUENTE */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-    color: #1e1b4b;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f0f0f0; /* Gris muy claro de fondo */
+    color: #121212; /* Negro casi puro */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,160 +22,211 @@ body {
 
 /* ---------- HEADER ---------- */
 header {
-    background: linear-gradient(135deg, #4c1d95, #6d28d9);
+    background-color: #002244; /* Azul oscuro profundo */
     padding: 1.5rem;
     text-align: center;
-    color: white;
+    color: #FFFFFF;
+    border-bottom: 5px solid #D4AF37; /* Línea dorada gruesa */
 }
 
-/* ---------- NAV ---------- */
+/* ---------- NAV (Menú) ---------- */
 nav {
-    background: #ede9fe;
-    border-bottom: 3px solid #4c1d95;
-    padding: 0.8rem 0;
+    background-color: #121212; /* Negro */
+    padding: 0;
 }
 
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
     list-style: none;
 }
 
 nav a {
     text-decoration: none;
-    color: #1e1b4b;
-    font-weight: 500;
-    padding: 0.6rem 1.4rem;
-    border-radius: 999px;
-    transition: 0.25s;
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    display: block;
+    transition: 0.3s;
+    border-right: 1px solid #333;
+    text-transform: uppercase;
+    font-size: 0.85rem;
 }
 
 nav a:hover {
-    background: #6366f1;
-    color: white;
+    background-color: #D4AF37; /* Dorado al pasar el mouse */
+    color: #121212;
 }   
 
 nav a.active {
-    background: #1e3a8a;
-    color: white;
+    background-color: #003366; /* Azul más claro para el activo */
+    color: #FFFFFF;
+    border-bottom: 3px solid #D4AF37;
 }
 
-/* ---------- SECTION ---------- */
+/* ---------- SECCIÓN PRINCIPAL ---------- */
 section {
     flex: 1;
-    max-width: 1200px; /* 🔥 más compacto */
-    width: 90%;
+    max-width: 1100px;
+    width: 95%;
     margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-    background-color: #e7e7e7;
+    padding: 2.5rem;
+    background-color: #FFFFFF;
+    border: 2px solid #121212; /* Borde negro sólido */
+    /* Sombra cuadrada estilo "retro/brutalista" */
+    box-shadow: 10px 10px 0px #D4AF37; 
 }
 
-/* TITULOS */
+/* TÍTULOS */
 section h1, section h2, section h3 {
-    color: #4c1d95;
-    margin-bottom: 1rem;
+    color: #002244;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-left: 8px solid #D4AF37;
+    padding-left: 15px;
+    margin-bottom: 1.5rem;
 }
 
 /* TEXTO */
 section p {
     text-align: justify;
-    margin-bottom: 1rem;
-    color: #475569;
+    margin-bottom: 1.2rem;
+    color: #333;
 }
 
-
-
-/* ---------- TABLAS ---------- */
+/* ---------- TABLAS CUADRADAS ---------- */
 table {
     width: 100%;
-    max-width: 900px; /* 🔥 controla tamaño real */
     border-collapse: collapse;
+    margin: 20px 0;
     background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    border: 3px solid #121212;
 }
 
-/* ENCABEZADO */
 th {
-    background: linear-gradient(135deg, #4c1d95, #6d28d9);
-    color: white;
-    padding: 12px;
+    background-color: #002244;
+    color: #D4AF37; /* Texto dorado en encabezado azul */
+    padding: 15px;
     text-align: center;
-    font-size: 0.9rem;
+    text-transform: uppercase;
+    border: 1px solid #121212;
 }
 
-/* CELDAS */
 td {
     padding: 12px;
-    border-bottom: 1px solid #eee;
+    border: 1px solid #ddd;
     text-align: center;
-    word-break: break-word; /* 🔥 evita que se rompa */
 }
 
-/* FILA HOVER */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
 tr:hover {
-    background: #f5f3ff;
+    background-color: #fff9e6; /* Toque crema al pasar el mouse */
 }
 
 /* ---------- FORMULARIOS ---------- */
 form {
     max-width: 600px;
     margin: 20px auto;
-    background: #faf9ff;
+    background: #ffffff;
     padding: 2rem;
-    border-radius: 20px;
-    border: 1px solid #ddd6fe;
+    border: 2px solid #002244;
 }
 
 form label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #4c1d95;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #002244;
+    text-transform: uppercase;
+    font-size: 0.8rem;
 }
 
-input, textarea {
+input, textarea, select {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 1px solid #c7d2fe;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #121212;
+    background-color: #fff;
+    font-size: 1rem;
 }
 
-input:focus, textarea:focus {
-    border-color: #6366f1;
+input:focus {
     outline: none;
+    border-color: #D4AF37;
+    background-color: #fffdf5;
 }
 
-/* ---------- BOTONES ---------- */
+/* ---------- BOTONES CUADRADOS ---------- */
 button,
 input[type="submit"],
 input[type="reset"] {
-    background: linear-gradient(135deg, #4c1d95, #6d28d9);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 999px;
+    background-color: #121212;
+    color: #FFFFFF;
+    border: 2px solid #121212;
+    padding: 12px 25px;
     cursor: pointer;
-    transition: 0.2s;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    display: inline-block;
 }
 
 button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    transform: translateY(-2px);
+input[type="submit"]:hover {
+    background-color: #D4AF37;
+    color: #121212;
+    transform: translate(-3px, -3px);
+    box-shadow: 3px 3px 0px #002244;
 }
 
 /* ---------- FOOTER ---------- */
 footer {
-    background: #1e1b4b;
-    color: #c7d2fe;
+    background-color: #121212;
+    color: #D4AF37;
     text-align: center;
     padding: 1.5rem;
-    margin-top: auto;
+    border-top: 3px solid #002244;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Tarjeta variante para fondos oscuros */
+.tarjeta.dark {
+    background: #121212;
+    color: #fff;
+    padding: 20px;
+    border: 2px solid #121212;
+}
+.tarjeta.dark h2, .tarjeta.dark h3, .tarjeta.dark h4, .tarjeta.dark p { color: #eee; }
+.tarjeta.dark a { color: #D4AF37; }
+
+/* Panel oscuro genérico para secciones destacadas */
+.dark-panel {
+    background: #121212;
+    color: #fff;
+    padding: 30px;
+    margin-top: 40px;
+    border-top: 5px solid #D4AF37;
+}
+.dark-panel h1,
+.dark-panel h2,
+.dark-panel h3,
+.dark-panel h4,
+.dark-panel p,
+.dark-panel li,
+.dark-panel a {
+    color: #eee;
+}
+.dark-panel h1,
+.dark-panel h2,
+.dark-panel h3,
+.dark-panel h4 {
+    color: #D4AF37;
+}
+.dark-panel .btn {
+    color: #121212;
+    background: #D4AF37;
 }

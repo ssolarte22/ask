@@ -1,6 +1,6 @@
 <?php
 
-$apiKey = "dGhlam95bWFya2VyQGdtYWlsLmNvbQ:j4a0E595JNG6hyNXQe-s8";
+$apiKey = "bWlnYWplcm9kb3duQGdtYWlsLmNvbQ:8ndazNcyLvDAWFuswAPCn";
 $id = $_GET['id'];
 
 $url = "https://api.d-id.com/talks/" . $id;

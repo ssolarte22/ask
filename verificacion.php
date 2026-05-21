@@ -1,11 +1,101 @@
+<?php
+    session_start();
+    date_default_timezone_set('America/Bogota');
+    require_once __DIR__ . '/inc/database.php';
+
+    if (isset($_SESSION['autenticado']) && $_SESSION['autenticado'] === true) {
+        header('Location: docente/homeDocente.php');
+        exit();
+    }
+
+    if (isset($_POST['enviar'])) {
+        $login = trim((string) ($_POST['login'] ?? ''));
+        $clave = (string) ($_POST['clave'] ?? '');
+
+        $usuario = $login !== '' ? ask_find_user_by_login($login) : null;
+
+        if ($usuario !== null && $usuario['rol'] === 'docente' && password_verify($clave, $usuario['password_hash'])) {
+            $_SESSION['docente'] = $usuario['nombre'];
+            $_SESSION['usuario'] = $usuario['nombre'];
+            $_SESSION['usuario_id'] = (int) $usuario['id'];
+            $_SESSION['login'] = $usuario['login'];
+            $_SESSION['rol'] = $usuario['rol'];
+            $_SESSION['autenticado'] = true;
+            $_SESSION['hora_ingreso'] = date('Y-m-d H:i:s');
+
+            header('Location: docente/homeDocente.php');
+            exit();
+        }
+
+        $error = "Credenciales incorrectas. Intente de nuevo.";
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colegio Mayor del Cauca - Inicio</title>
+    <title>Verificación - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Si está en una carpeta css/, usa: href="css/estilos.css" -->
+    <style>
+        /* Estilos específicos para el Login */
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background: #fff;
+            border: 2px solid #002244;
+            box-shadow: 10px 10px 0px #D4AF37;
+            padding: 30px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-header h2 {
+            color: #002244;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #121212;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 0; /* Estilo rígido */
+            box-sizing: border-box;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .error-msg {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #991b1b;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,84 +103,69 @@
     <div class="logo-container">
         <span class="logo-icon">🏛️</span>
         <div>
-            <h1>Tutor para creacion de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
+            <h1>Acceso al Sistema</h1>
+            <p>Plataforma de Tutoría IA - Unimayor</p>
         </div>
     </div>
 </header>
 
 <nav>
-    <?php 
-        include 'menu.html';
-    ?>
+    <?php include 'menu.html'; ?>
 </nav>
 
 <section>
-    <h2 align="center">Verificar Usuario</h2>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Verificar Usuario</h2>
+            <p><small>Ingrese sus credenciales para continuar</small></p>
+        </div>
 
-    <form action="verificacion.php" method="POST">
-        <table>
-            <thead>
-                <tr><th colspan="2">Datos usuario</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>Login</th>
-                    <td><input type="text" name="login"></td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <td><input type="password" name="clave"></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="enviar"></td>
-                    <td><input type="reset" name="restablecer"></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
-    
-    <?php
-        session_start();
+        <?php if(isset($error)): ?>
+            <div class="error-msg"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
+        <?php endif; ?>
 
-        date_default_timezone_set('America/Bogota');
-        if(isset($_POST['enviar'])){
-            $login = $_POST['login'];
-            $clave = $_POST['clave'];
+        <form action="verificacion.php" method="POST">
+            <div class="form-group">
+                <label for="login">Usuario / Login:</label>
+                <input type="text" id="login" name="login" placeholder="Ej: ivan.beltran" required>
+            </div>
 
-            if($login === $login && $clave === '123'){
+            <div class="form-group">
+                <label for="clave">Contraseña:</label>
+                <input type="password" id="clave" name="clave" placeholder="••••••••" required>
+            </div>
 
-                //creo variables de sesion, que mantiene sus datos
-                $_SESSION['docente'] = "$login";
-                $_SESSION['autenticado'] = true;
-                $_SESSION['hora_ingreso'] = date('Y-m-d H:i:s');
+            <div class="btn-group">
+                <input type="submit" name="enviar" value="Ingresar" class="btn" style="width: 100%; cursor: pointer;">
+                <input type="reset" name="restablecer" value="Limpiar" class="btn" style="width: 100%; background: #666; cursor: pointer;">
+            </div>
+        </form>
 
-                //redirecciona a la pagina de inicio automaticamente
-                header('Location: docente/homeDocente.php');
+        <p style="margin-top: 18px; text-align: center;">
+            ¿No tienes cuenta? <a href="registrar.php"><strong>Registrar profesor</strong></a>
+        </p>
 
-            }else{
-                header('Location: home.php');
-            }
-        }    
-    ?>
+        <p style="margin-top: 8px; text-align: center;">
+            ¿Eres administrador? <a href="/ask/admin/login.php"><strong>Ingresar como administrador</strong></a>
+        </p>
 
+    </div>
 </section>
 
 <footer>
-    <p>Colegio Mayor del Cauca - Todos los derechos reservados © 2025</p>
-    <p>📍 Calle 5 # 8-20, Popayán | 📞 (602) 8234567</p>
+    <p>Colegio Mayor del Cauca - Todos los derechos reservados © 2026</p>
+    <p>📍 Calle 5 # 8-20, Popayán | Innovación Educativa</p>
 </footer>
 
 <script>
-const links = document.querySelectorAll("nav a");
-const current = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("nav a");
+    const current = window.location.pathname.split("/").pop();
 
-links.forEach(link => {
-    link.classList.remove("active"); // 🔥 limpia todos
-    if (link.getAttribute("href") === current) {
-        link.classList.add("active");
-    }
-});
+    links.forEach(link => {
+        if (link.getAttribute("href") === current) {
+            link.classList.add("active");
+        }
+    });
 </script>
 
 </body>

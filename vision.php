@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colegio Mayor del Cauca - Inicio</title>
+    <title>Visión - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Si está en una carpeta css/, usa: href="css/estilos.css" -->
+    <style>
+        /* Estilos específicos para la sección de Visión */
+        .vision-container {
+            border-right: 8px solid #D4AF37;
+            padding: 20px 30px;
+            background: #fff;
+            margin-bottom: 40px;
+            box-shadow: -6px 6px 0px #002244;
+            text-align: right;
+        }
+
+        .vision-container p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #121212;
+            margin-bottom: 15px;
+        }
+
+        .highlight-blue {
+            color: #002244;
+            font-weight: bold;
+        }
+
+        .meta-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        table th {
+            background-color: #002244;
+            color: #D4AF37;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,87 +46,87 @@
     <div class="logo-container">
         <span class="logo-icon">🏛️</span>
         <div>
-            <h1>Tutor para creacion de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
+            <h1>Visión de Futuro</h1>
+            <p>Proyección, Innovación y Referencia Tecnológica</p>
         </div>
     </div>
 </header>
 
 <nav>
-    <?php 
-        include 'menu.html';
-    ?>
+    <?php include 'menu.html'; ?>
 </nav>
 
 <section>
-    <h2> Visión del Proyecto</h2>
+    <h2>Visión del Proyecto</h2>
 
-    <p>
-        La visión del proyecto es consolidarse como una plataforma educativa de referencia en el uso de 
-        inteligencia artificial para la generación de contenido digital, contribuyendo al desarrollo de 
-        competencias tecnológicas en estudiantes y profesionales.
-    </p>
+    <div class="vision-container">
+        <span class="meta-icon">👁️</span>
+        <p>
+            Para el año <span class="highlight-blue">2028</span>, el sistema consolidará su posición como una plataforma educativa de referencia en el uso de 
+            <span class="highlight-blue">Inteligencia Artificial</span> para la generación de contenido digital, contribuyendo al desarrollo de 
+            competencias tecnológicas de vanguardia en estudiantes y profesionales de la región.
+        </p>
 
-    <p>
-        Se proyecta que esta herramienta evolucione integrando nuevas funcionalidades, como generación de 
-        videos más avanzados, personalización de avatares, integración con múltiples APIs de IA y mejoras 
-        en la experiencia de usuario.
-    </p>
+        <p>
+            Se proyecta una evolución integral del sistema mediante la incorporación de funcionalidades avanzadas, 
+            personalización profunda de avatares mediante redes neuronales y la integración fluida con múltiples APIs de IA líderes en la industria.
+        </p>
 
-    <p>
-        A largo plazo, se espera que el sistema pueda ser implementado en entornos académicos reales, 
-        apoyando procesos de enseñanza-aprendizaje mediante el uso de tecnologías innovadoras.
-    </p>
+        <p>
+            A largo plazo, aspiramos a una implementación total en entornos académicos reales, 
+            transformando los procesos de enseñanza-aprendizaje mediante el uso de tecnologías disruptivas e innovadoras.
+        </p>
+    </div>
 
-    <br>
-
-    <h3>Proyección a Futuro</h3>
+    <h3>Proyección Estratégica</h3>
 
     <table>
         <thead>
             <tr>
-                <th>Aspecto</th>
-                <th>Meta</th>
+                <th>Eje de Desarrollo</th>
+                <th>Meta Establecida</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Escalabilidad</td>
-                <td>Integrar múltiples herramientas de IA en una sola plataforma.</td>
+                <td style="font-weight: bold;">Escalabilidad Corporativa</td>
+                <td>Integrar un ecosistema de múltiples herramientas de IA en una interfaz unificada.</td>
             </tr>
             <tr>
-                <td>Interactividad</td>
-                <td>Mejorar la experiencia del usuario con interfaces dinámicas.</td>
+                <td style="font-weight: bold;">Interactividad Avanzada</td>
+                <td>Optimizar la experiencia de usuario mediante interfaces dinámicas de baja latencia.</td>
             </tr>
             <tr>
-                <td>Educación</td>
-                <td>Implementación en instituciones educativas.</td>
+                <td style="font-weight: bold;">Impacto Educativo</td>
+                <td>Expandir la implementación a diversas facultades e instituciones externas.</td>
             </tr>
             <tr>
-                <td>Automatización</td>
-                <td>Generación de contenido más autónoma y precisa.</td>
+                <td style="font-weight: bold;">Autonomía del Sistema</td>
+                <td>Lograr una generación de contenido autónoma, precisa y con alta fidelidad técnica.</td>
             </tr>
         </tbody>
     </table>
+
+    <div class="tarjeta" style="background: #f4f4f4; border: 1px dashed #002244; margin-top: 40px; text-align: center;">
+        <p><em>"Liderando la transición hacia una educación digital inteligente."</em></p>
+    </div>
 </section>
 
 <footer>
-    <p>Colegio Mayor del Cauca - Todos los derechos reservados © 2025</p>
-    <p>📍 Calle 5 # 8-20, Popayán | 📞 (602) 8234567</p>
+    <p>Colegio Mayor del Cauca - Todos los derechos reservados © 2026</p>
+    <p>📍 Calle 5 # 8-20, Popayán | Innovación y Tecnología</p>
 </footer>
 
-
-
 <script>
-const links = document.querySelectorAll("nav a");
-const current = window.location.pathname.split("/").pop();
+    const links = document.querySelectorAll("nav a");
+    const current = window.location.pathname.split("/").pop();
 
-links.forEach(link => {
-    link.classList.remove("active"); // 🔥 limpia todos
-    if (link.getAttribute("href") === current) {
-        link.classList.add("active");
-    }
-});
+    links.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === current) {
+            link.classList.add("active");
+        }
+    });
 </script>
 
 </body>

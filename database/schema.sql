@@ -1,0 +1,51 @@
+-- Esquema inicial para el proyecto principal
+-- Ejecutar junto con database/install.php
+
+CREATE DATABASE IF NOT EXISTS ask_tutor
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE ask_tutor;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  login VARCHAR(50) NOT NULL UNIQUE,
+  nombre VARCHAR(120) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  rol ENUM('docente', 'admin') NOT NULL DEFAULT 'docente',
+  videos_generados INT UNSIGNED NOT NULL DEFAULT 0,
+  activo TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_usuarios_rol (rol),
+  INDEX idx_usuarios_activo (activo)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS configuracion (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  clave VARCHAR(80) NOT NULL UNIQUE,
+  valor VARCHAR(255) NOT NULL,
+  updated_at DATETIME NULL ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS cursos (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(60) NOT NULL UNIQUE,
+  titulo VARCHAR(150) NOT NULL,
+  descripcion TEXT NOT NULL,
+  contenido LONGTEXT NULL,
+  orden TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  activo TINYINT(1) NOT NULL DEFAULT 1,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_cursos_activo (activo)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS herramientas_ia (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(80) NOT NULL,
+  descripcion TEXT NOT NULL,
+  uso_educativo TEXT NOT NULL,
+  precio VARCHAR(120) NOT NULL,
+  orden TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  activo TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB;
