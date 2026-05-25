@@ -8,7 +8,7 @@ header("Content-Type: application/json; charset=UTF-8");
 ob_start();
 
 // Tu API Key de Groq (obtenerla en https://console.groq.com)
-$apiKey = "";
+// $apiKey = "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";
 
 // Obtener el prompt del POST
 $prompt = $_POST['prompt'] ?? '';

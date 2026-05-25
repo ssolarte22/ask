@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 header('Content-Type: application/json');
 
-$apiKey = "";
+// $apiKey = "bWlnYWplcm9kb3duQGdtYWlsLmNvbQ:8ndazNcyLvDAWFuswAPCn";
 
 if (!isset($_POST['prompt']) || empty($_POST['prompt'])) {
     echo json_encode(["error" => "Prompt vacío"]);
