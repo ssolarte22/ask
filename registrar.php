@@ -46,69 +46,6 @@ if (isset($_POST['registrar'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Profesor - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .register-container {
-            max-width: 520px;
-            margin: 50px auto;
-            background: #fff;
-            border: 2px solid #002244;
-            box-shadow: 10px 10px 0px #D4AF37;
-            padding: 30px;
-        }
-
-        .register-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .register-header h2 {
-            color: #002244;
-            margin: 0;
-            text-transform: uppercase;
-            font-size: 1.4rem;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #121212;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .msg-error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 10px;
-            border: 1px solid #991b1b;
-            margin-bottom: 18px;
-        }
-
-        .msg-ok {
-            background: #dcfce7;
-            color: #166534;
-            padding: 10px;
-            border: 1px solid #166534;
-            margin-bottom: 18px;
-        }
-
-        .btn-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
@@ -163,8 +100,8 @@ if (isset($_POST['registrar'])) {
             </div>
 
             <div class="btn-row">
-                <input type="submit" name="registrar" value="Registrar" class="btn" style="width: 100%; cursor: pointer;">
-                <a href="verificacion.php" class="btn" style="display:block; text-align:center; background:#666; text-decoration:none;">Iniciar Sesión</a>
+                <input type="submit" name="registrar" value="Registrar" class="btn">
+                <a href="verificacion.php" class="btn">Iniciar Sesión</a>
             </div>
         </form>
     </div>

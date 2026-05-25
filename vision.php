@@ -5,40 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visión - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos específicos para la sección de Visión */
-        .vision-container {
-            border-right: 8px solid #D4AF37;
-            padding: 20px 30px;
-            background: #fff;
-            margin-bottom: 40px;
-            box-shadow: -6px 6px 0px #002244;
-            text-align: right;
-        }
-
-        .vision-container p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #121212;
-            margin-bottom: 15px;
-        }
-
-        .highlight-blue {
-            color: #002244;
-            font-weight: bold;
-        }
-
-        .meta-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        table th {
-            background-color: #002244;
-            color: #D4AF37;
-        }
-    </style>
 </head>
 <body>
 
@@ -107,7 +73,7 @@
         </tbody>
     </table>
 
-    <div class="tarjeta" style="background: #f4f4f4; border: 1px dashed #002244; margin-top: 40px; text-align: center;">
+    <div class="tarjeta" style="margin-top: 40px; text-align: center;">
         <p><em>"Liderando la transición hacia una educación digital inteligente."</em></p>
     </div>
 </section>

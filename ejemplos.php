@@ -5,51 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplos de Prompts - Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos para bloques de comparación y código */
-        .prompt-container {
-            border: 2px solid #121212;
-            margin-bottom: 30px;
-            background: #fff;
-        }
-        .prompt-header {
-            padding: 10px 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-        .header-bueno { background: #dcfce7; color: #166534; border-bottom: 2px solid #166534; }
-        .header-malo { background: #fee2e2; color: #991b1b; border-bottom: 2px solid #991b1b; }
-        
-        .prompt-body {
-            padding: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            background: #121212;
-            color: #D4AF37;
-            line-height: 1.6;
-        }
-        
-        .analisis-box {
-            padding: 15px;
-            background: #f4f4f4;
-            border-top: 1px solid #ddd;
-        }
-
-        .check-list {
-            list-style: none;
-            padding: 0;
-        }
-        .check-list li::before {
-            content: "▪ ";
-            color: #D4AF37;
-            font-weight: bold;
-        }
-
-        table th {
-            background-color: #002244;
-            color: #D4AF37;
-        }
-    </style>
 </head>
 <body>
 
@@ -92,7 +47,7 @@
                 <td>Contenido genérico, visualmente inconsistente y sin enfoque educativo.</td>
             </tr>
             <tr>
-                <td style="color: #002244; font-weight: bold;">Bueno</td>
+                <td style="color: #1d4ed8; font-weight: bold;">Bueno</td>
                 <td>"Genera un video educativo de 40 segundos explicando qué es la inteligencia artificial, con ejemplos simples, voz clara en español y tono académico."</td>
                 <td>Material estructurado, con objetivos de aprendizaje claros y útil para el aula.</td>
             </tr>
@@ -155,8 +110,8 @@
     <hr style="margin: 40px 0;">
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div style="border: 2px solid #881111; padding: 20px;">
-            <h3 style="color: #881111;">Errores Críticos a Evitar</h3>
+        <div class="tarjeta">
+            <h3>Errores Críticos a Evitar</h3>
             <ul class="check-list">
                 <li>No especificar la duración del video.</li>
                 <li>Omitir el tipo de audiencia o público.</li>
@@ -165,7 +120,7 @@
             </ul>
         </div>
         <div class="dark-panel" style="margin-top: 0;">
-            <h3 style="color: #D4AF37;">Ponlo en Práctica</h3>
+            <h3>Ponlo en Práctica</h3>
             <p>Aplica estas estructuras generando tu propio contenido con la herramienta integrada en la plataforma.</p>
             <p><em>Sugerencia: Copia la plantilla "Académica" y adáptala a tu próximo examen o taller.</em></p>
         </div>

@@ -5,51 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de IA - Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos para tablas de comparación técnica */
-        table {
-            border: 2px solid #121212;
-            margin-bottom: 40px;
-        }
-        th {
-            background-color: #002244;
-            color: #D4AF37;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            padding: 12px;
-        }
-        td {
-            border: 1px solid #eee;
-            padding: 12px;
-            font-size: 0.95rem;
-        }
-        tr:nth-child(even) {
-            background-color: #fcfcfc;
-        }
-        .prompt-code {
-            background-color: #121212;
-            color: #D4AF37;
-            padding: 5px 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            display: block;
-        }
-        .tag-gratis {
-            background: #dcfce7;
-            color: #166534;
-            padding: 2px 8px;
-            font-weight: bold;
-            font-size: 0.75rem;
-        }
-        .tag-pago {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 2px 8px;
-            font-weight: bold;
-            font-size: 0.75rem;
-        }
-    </style>
 </head>
 <body>
 
@@ -76,7 +31,7 @@
         el contexto, la complejidad del proyecto y el nivel técnico del usuario.
     </p>
 
-    <div class="tarjeta" style="margin: 30px 0; border-left: 8px solid #D4AF37;">
+    <div class="tarjeta" style="margin: 30px 0;">
         <h3>Comparación General de Motores</h3>
         <table>
             <thead>

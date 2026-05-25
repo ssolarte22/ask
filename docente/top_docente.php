@@ -44,4 +44,4 @@ if (!isset($badgePlataforma)) {
 </nav>
 
 <?php include __DIR__ . '/../Api-key/modal-AI.php'; ?>
-<script src="/ask/js/Api.js"></script>
+<script src="../js/Api.js"></script>

@@ -14,7 +14,7 @@ $clave = 'admin123';
 
 // Upsert admin user
 $stmt = $pdo->prepare(
-    'INSERT INTO usuarios (login, nombre, password_hash, rol, videos_generados, activo)
+    'INSERT INTO tv_usuarios (login, nombre, password_hash, rol, videos_generados, activo)
      VALUES (:login, :nombre, :hash, :rol, 0, 1)
      ON DUPLICATE KEY UPDATE nombre = VALUES(nombre), password_hash = VALUES(password_hash), rol = VALUES(rol), activo = VALUES(activo)'
 );

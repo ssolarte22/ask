@@ -5,39 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Misión - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos específicos para destacar la misión */
-        .mision-container {
-            border-left: 8px solid #D4AF37;
-            padding: 20px 30px;
-            background: #fff;
-            margin-bottom: 40px;
-            box-shadow: 6px 6px 0px #002244;
-        }
-
-        .mision-container p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #121212;
-            margin-bottom: 15px;
-        }
-
-        .highlight-text {
-            color: #002244;
-            font-weight: bold;
-        }
-
-        table th {
-            background-color: #002244;
-            color: #D4AF37;
-        }
-
-        .icon-box {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-    </style>
 </head>
 <body>
 

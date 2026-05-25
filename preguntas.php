@@ -5,46 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos específicos para la sección de FAQ */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .pregunta-card {
-            background: #fff;
-            border: 2px solid #121212;
-            padding: 20px;
-            box-shadow: 5px 5px 0px #D4AF37;
-        }
-
-        .pregunta-card h3 {
-            color: #002244;
-            font-size: 1rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-            background: #002244;
-            color: #D4AF37;
-        }
-
-        table th {
-            background-color: #002244;
-            color: #D4AF37;
-        }
-    </style>
 </head>
 <body>
 
@@ -136,11 +96,11 @@
     </table>
 
     <div class="tarjeta dark" style="margin-top: 40px;">
-        <h3 style="color: #D4AF37;">Consejos para el Éxito</h3>
-        <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 10px;">✔ <strong>Especificidad:</strong> Menos es más, siempre que sea claro.</li>
-            <li style="margin-bottom: 10px;">✔ <strong>Iteración:</strong> Prueba diferentes versiones del mismo prompt.</li>
-            <li style="margin-bottom: 10px;">✔ <strong>Análisis:</strong> Observa qué palabras clave generan mejores visuales.</li>
+        <h3>Consejos para el Éxito</h3>
+        <ul class="check-list">
+            <li><strong>Especificidad:</strong> Menos es más, siempre que sea claro.</li>
+            <li><strong>Iteración:</strong> Prueba diferentes versiones del mismo prompt.</li>
+            <li><strong>Análisis:</strong> Observa qué palabras clave generan mejores visuales.</li>
         </ul>
     </div>
 

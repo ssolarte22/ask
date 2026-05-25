@@ -42,15 +42,15 @@ SELECT
     rel.activo,
     rel.created_at,
     rel.updated_at
-FROM docente_curso_alumnos rel
-INNER JOIN usuarios u ON u.id = rel.docente_id
-INNER JOIN docente_cursos c ON c.id = rel.curso_id
-INNER JOIN docente_alumnos a ON a.id = rel.alumno_id');
+FROM tv_docente_curso_alumnos rel
+INNER JOIN tv_usuarios u ON u.id = rel.docente_id
+INNER JOIN tv_docente_cursos c ON c.id = rel.curso_id
+INNER JOIN tv_docente_alumnos a ON a.id = rel.alumno_id');
 
 $pdo = ask_db_connection();
 
 $pdo->exec('DROP TABLE IF EXISTS progreso_docente');
-$pdo->exec("DELETE FROM configuracion WHERE clave IN ('limite_videos_dia', 'duracion_maxima')");
+$pdo->exec("DELETE FROM tv_configuracion WHERE clave IN ('limite_videos_dia', 'duracion_maxima')");
 
 $seed = file_get_contents(__DIR__ . '/seed.sql');
 if ($seed !== false) {
@@ -62,15 +62,15 @@ if ($seed !== false) {
 }
 
 $usuarios = [
-    ['login' => 'admin', 'nombre' => 'Administrador', 'clave' => 'admin123', 'rol' => 'admin'],
-    ['login' => '123', 'nombre' => 'Lalo cota', 'clave' => 'admin', 'rol' => 'docente'],
-    ['login' => 'ela', 'nombre' => 'Elsa Pito', 'clave' => '45', 'rol' => 'docente'],
-    ['login' => '2343rbhg', 'nombre' => 'gbhnhntyhty', 'clave' => 'yy', 'rol' => 'docente'],
-    ['login' => 'ivan.beltran', 'nombre' => 'Ivan Beltran', 'clave' => '123', 'rol' => 'docente'],
+    ['login' => 'admin_tutor', 'nombre' => 'Administrador Tutor', 'clave' => 'Admin@2026', 'rol' => 'admin'],
+    ['login' => 'maria.gomez', 'nombre' => 'María Gómez', 'clave' => 'Docente@123', 'rol' => 'docente'],
+    ['login' => 'jose.perez', 'nombre' => 'José Pérez', 'clave' => 'Clase@456', 'rol' => 'docente'],
+    ['login' => 'ana.lopez', 'nombre' => 'Ana López', 'clave' => 'Prompts@789', 'rol' => 'docente'],
+    ['login' => 'carlos.ramirez', 'nombre' => 'Carlos Ramírez', 'clave' => 'Tutor@321', 'rol' => 'docente'],
 ];
 
 $stmt = $pdo->prepare(
-    'INSERT INTO usuarios (login, nombre, password_hash, rol, videos_generados)
+    'INSERT INTO tv_usuarios (login, nombre, password_hash, rol, videos_generados)
      VALUES (:login, :nombre, :hash, :rol, 0)
      ON DUPLICATE KEY UPDATE nombre = VALUES(nombre), password_hash = VALUES(password_hash), rol = VALUES(rol)'
 );
@@ -86,6 +86,6 @@ foreach ($usuarios as $usuario) {
 
 
 echo "Instalación completada.\n";
-echo "Docente: 123 / admin\n";
-echo "Docente alterno: ivan.beltran / 123\n";
-echo "Administrador: admin / admin123\n";
+echo "Docente: maria.gomez / Docente@123\n";
+echo "Docente alterno: carlos.ramirez / Tutor@321\n";
+echo "Administrador: admin_tutor / Admin@2026\n";

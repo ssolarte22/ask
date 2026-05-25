@@ -37,65 +37,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verificación - Tutor IA Unimayor</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Estilos específicos para el Login */
-        .login-container {
-            max-width: 400px;
-            margin: 50px auto;
-            background: #fff;
-            border: 2px solid #002244;
-            box-shadow: 10px 10px 0px #D4AF37;
-            padding: 30px;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .login-header h2 {
-            color: #002244;
-            margin: 0;
-            text-transform: uppercase;
-            font-size: 1.4rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #121212;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 0; /* Estilo rígido */
-            box-sizing: border-box;
-        }
-
-        .btn-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .error-msg {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 10px;
-            text-align: center;
-            margin-bottom: 20px;
-            border: 1px solid #991b1b;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
 <body>
 
@@ -136,8 +77,8 @@
             </div>
 
             <div class="btn-group">
-                <input type="submit" name="enviar" value="Ingresar" class="btn" style="width: 100%; cursor: pointer;">
-                <input type="reset" name="restablecer" value="Limpiar" class="btn" style="width: 100%; background: #666; cursor: pointer;">
+                <input type="submit" name="enviar" value="Ingresar" class="btn">
+                <input type="reset" name="restablecer" value="Limpiar" class="btn">
             </div>
         </form>
 
@@ -146,7 +87,7 @@
         </p>
 
         <p style="margin-top: 8px; text-align: center;">
-            ¿Eres administrador? <a href="/ask/admin/login.php"><strong>Ingresar como administrador</strong></a>
+            ¿Eres administrador? <a href="admin/login.php"><strong>Ingresar como administrador</strong></a>
         </p>
 
     </div>

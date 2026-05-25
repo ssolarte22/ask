@@ -1,6 +1,6 @@
 -- Datos iniciales para el proyecto principal
 
-INSERT INTO cursos (slug, titulo, descripcion, contenido, orden) VALUES
+INSERT INTO tv_cursos (slug, titulo, descripcion, contenido, orden) VALUES
   (
     'curso-1',
     'Curso Docente 1: Introducción a la enseñanza de prompts',
@@ -21,7 +21,7 @@ ON DUPLICATE KEY UPDATE
   contenido = VALUES(contenido),
   orden = VALUES(orden);
 
-INSERT INTO herramientas_ia (nombre, descripcion, uso_educativo, precio, orden) VALUES
+INSERT INTO tv_herramientas_ia (nombre, descripcion, uso_educativo, precio, orden) VALUES
   ('Groq', 'Motor de texto para generar guiones y prompts.', 'Redacción de guiones educativos.', 'Plan gratuito / pago', 1),
   ('D-ID', 'Generación de videos con avatares parlantes.', 'Producción de videos explicativos.', 'Pago por uso', 2),
   ('ChatGPT', 'Asistente conversacional para ideas y contenido.', 'Apoyo a la escritura y planeación.', 'Gratis / Plus', 3)
