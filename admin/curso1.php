@@ -1,4 +1,4 @@
-$<?php
+<?php
     session_start();
     require_once __DIR__ . '/../inc/database.php';
     if(!isset($_SESSION['autenticado'])){
@@ -25,20 +25,7 @@ $descripcionCurso = $curso['descripcion'] ?? 'Contenido del curso 1 para adminis
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div class="bienvenida-profe">Bienvenido Administrador: <?php echo htmlspecialchars($_SESSION['usuario'] ?? ($_SESSION['docente'] ?? ''), ENT_QUOTES, 'UTF-8'); ?></div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuAdmin.html'; ?>
-</nav>
+<?php include 'top_admin.php'; ?>
 
 <section>
     <h2><?php echo htmlspecialchars($tituloCurso, ENT_QUOTES, 'UTF-8'); ?></h2>

@@ -61,22 +61,10 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div style="background: #D4AF37; color: #121212; padding: 3px 10px; display: inline-block; font-weight: bold; font-size: 0.8rem; margin-top: 10px;">
-                DOCENTE: <?php echo htmlspecialchars($_SESSION['docente']); ?>
-            </div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuDocente.html'; ?>
-</nav>
+<?php
+$badgePlataforma = 'Docente: ' . ($_SESSION['docente'] ?? '');
+include 'top_docente.php';
+?>
 
 <section>
     <h2>Formación Técnica en IA para Generación de Video</h2>
@@ -85,6 +73,13 @@
         Este módulo se centra en comprender cómo funciona internamente la generación de contenido mediante inteligencia artificial, 
         permitiendo al docente tomar decisiones informadas al momento de orientar a los estudiantes.
     </p>
+
+    <div class="tarjeta dark">
+        <h3 style="color:#D4AF37;">Gestión académica</h3>
+        <p>Antes de enseñar contenido, crea tus cursos y registra estudiantes en el módulo académico.</p>
+        <a href="cursos.php" class="btn" style="margin-right:10px;">Cursos</a>
+        <a href="estudiantes.php" class="btn">Estudiantes</a>
+    </div>
 
     <div class="tarjeta">
         <h3>¿Cómo interpreta la IA un prompt?</h3>

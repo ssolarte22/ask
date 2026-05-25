@@ -24,22 +24,7 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div style="background: #D4AF37; color: #121212; padding: 3px 10px; display: inline-block; font-weight: bold; font-size: 0.8rem; margin-top: 10px;">
-                ADMINISTRADOR: <?php echo htmlspecialchars($_SESSION['usuario'] ?? ($_SESSION['docente'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>
-            </div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuAdmin.html'; ?>
-</nav>
+<?php include 'top_admin.php'; ?>
 
 <section>
     <h2>Formación Técnica en IA para la Administración de la Plataforma</h2>

@@ -111,19 +111,7 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuDocente.html'; ?>
-</nav>
+<?php include 'top_docente.php'; ?>
 
 <section>
     <h2>Perfil del Docente</h2>
@@ -140,6 +128,15 @@
 
             <span class="label-perfil">Último Ingreso</span>
             <p class="dato-perfil"><?php echo htmlspecialchars($_SESSION['hora_ingreso'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+        </div>
+
+        <div style="flex: 1; min-width: 300px;">
+            <h3>Gestión académica</h3>
+            <div class="tarjeta dark">
+                <p>Administra tus cursos y estudiantes desde este mismo perfil.</p>
+                <a href="cursos.php" class="btn" style="margin-right:10px;">Cursos</a>
+                <a href="estudiantes.php" class="btn">Estudiantes</a>
+            </div>
         </div>
 
         <div style="flex: 1; min-width: 300px;">

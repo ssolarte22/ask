@@ -55,22 +55,7 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div class="bienvenida-profe">
-                Bienvenido Profesor: <?php echo htmlspecialchars($_SESSION['docente']); ?>
-            </div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuDocente.html'; ?>
-</nav>
+<?php include 'top_docente.php'; ?>
 
 <section>
     <h2><?php echo htmlspecialchars($tituloCurso, ENT_QUOTES, 'UTF-8'); ?></h2>

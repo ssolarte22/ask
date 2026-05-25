@@ -227,3 +227,226 @@ function ask_increment_video_count(int $userId): void
 
     $stmt->execute(['id' => $userId]);
 }
+
+function ask_list_docente_courses(int $docenteId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT id, docente_id, nombre, descripcion, activo, created_at, updated_at
+         FROM docente_cursos
+         WHERE docente_id = :docente_id AND activo = 1
+         ORDER BY created_at DESC, id DESC'
+    );
+    $stmt->execute(['docente_id' => $docenteId]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_create_docente_course(int $docenteId, string $nombre, string $descripcion = ''): int
+{
+    $stmt = ask_db_connection()->prepare(
+        'INSERT INTO docente_cursos (docente_id, nombre, descripcion, activo)
+         VALUES (:docente_id, :nombre, :descripcion, 1)'
+    );
+
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'nombre' => $nombre,
+        'descripcion' => $descripcion,
+    ]);
+
+    return (int) ask_db_connection()->lastInsertId();
+}
+
+function ask_list_docente_topics(int $docenteId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT t.id, t.docente_id, t.curso_id, t.nombre, t.descripcion, t.orden, t.activo, t.created_at, t.updated_at,
+                c.nombre AS curso_nombre
+         FROM docente_temas t
+         INNER JOIN docente_cursos c ON c.id = t.curso_id
+         WHERE t.docente_id = :docente_id AND t.activo = 1 AND c.activo = 1
+         ORDER BY c.nombre ASC, t.orden ASC, t.id DESC'
+    );
+    $stmt->execute(['docente_id' => $docenteId]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_list_docente_topics_by_course(int $docenteId, int $cursoId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT id, docente_id, curso_id, nombre, descripcion, orden, activo, created_at, updated_at
+         FROM docente_temas
+         WHERE docente_id = :docente_id AND curso_id = :curso_id AND activo = 1
+         ORDER BY orden ASC, id ASC'
+    );
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'curso_id' => $cursoId,
+    ]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_create_docente_topic(int $docenteId, int $cursoId, string $nombre, string $descripcion = '', int $orden = 1): int
+{
+    $stmt = ask_db_connection()->prepare(
+        'INSERT INTO docente_temas (docente_id, curso_id, nombre, descripcion, orden, activo)
+         VALUES (:docente_id, :curso_id, :nombre, :descripcion, :orden, 1)'
+    );
+
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'curso_id' => $cursoId,
+        'nombre' => $nombre,
+        'descripcion' => $descripcion,
+        'orden' => $orden,
+    ]);
+
+    return (int) ask_db_connection()->lastInsertId();
+}
+
+function ask_find_docente_course_by_id(int $cursoId, int $docenteId): ?array
+{
+    return ask_db_query_one(
+        'SELECT id, docente_id, nombre, descripcion, activo
+         FROM docente_cursos
+         WHERE id = :id AND docente_id = :docente_id AND activo = 1
+         LIMIT 1',
+        ['id' => $cursoId, 'docente_id' => $docenteId]
+    );
+}
+
+function ask_list_docente_students(int $docenteId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT id, docente_id, nombre, cedula, activo, created_at, updated_at
+         FROM docente_alumnos
+         WHERE docente_id = :docente_id AND activo = 1
+         ORDER BY created_at DESC, id DESC'
+    );
+    $stmt->execute(['docente_id' => $docenteId]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_create_docente_student(int $docenteId, string $nombre, string $cedula): int
+{
+    $stmt = ask_db_connection()->prepare(
+        'INSERT INTO docente_alumnos (docente_id, nombre, cedula, activo)
+         VALUES (:docente_id, :nombre, :cedula, 1)'
+    );
+
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'nombre' => $nombre,
+        'cedula' => $cedula,
+    ]);
+
+    return (int) ask_db_connection()->lastInsertId();
+}
+
+function ask_find_docente_student_by_id(int $alumnoId, int $docenteId): ?array
+{
+    return ask_db_query_one(
+        'SELECT id, docente_id, nombre, cedula, activo, created_at, updated_at
+         FROM docente_alumnos
+         WHERE id = :id AND docente_id = :docente_id AND activo = 1
+         LIMIT 1',
+        ['id' => $alumnoId, 'docente_id' => $docenteId]
+    );
+}
+
+function ask_list_docente_course_students(int $docenteId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT rel.id, rel.docente_id, rel.curso_id, rel.alumno_id, rel.activo, rel.created_at,
+                c.nombre AS curso_nombre,
+                a.nombre AS alumno_nombre,
+                a.cedula AS alumno_cedula
+         FROM docente_curso_alumnos rel
+         INNER JOIN docente_cursos c ON c.id = rel.curso_id
+         INNER JOIN docente_alumnos a ON a.id = rel.alumno_id
+         WHERE rel.docente_id = :docente_id AND rel.activo = 1
+         ORDER BY rel.created_at DESC, rel.id DESC'
+    );
+    $stmt->execute(['docente_id' => $docenteId]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_list_docente_course_students_by_course(int $docenteId, int $cursoId): array
+{
+    $stmt = ask_db_connection()->prepare(
+        'SELECT rel.id, rel.docente_id, rel.curso_id, rel.alumno_id, rel.activo, rel.created_at,
+                a.nombre AS alumno_nombre,
+                a.cedula AS alumno_cedula
+         FROM docente_curso_alumnos rel
+         INNER JOIN docente_alumnos a ON a.id = rel.alumno_id
+         WHERE rel.docente_id = :docente_id AND rel.curso_id = :curso_id AND rel.activo = 1
+         ORDER BY rel.created_at DESC, rel.id DESC'
+    );
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'curso_id' => $cursoId,
+    ]);
+
+    return $stmt->fetchAll() ?: [];
+}
+
+function ask_unassign_docente_student_from_course(int $docenteId, int $cursoId, int $alumnoId): bool
+{
+    $stmt = ask_db_connection()->prepare(
+        'DELETE FROM docente_curso_alumnos
+         WHERE docente_id = :docente_id AND curso_id = :curso_id AND alumno_id = :alumno_id'
+    );
+
+    return $stmt->execute([
+        'docente_id' => $docenteId,
+        'curso_id' => $cursoId,
+        'alumno_id' => $alumnoId,
+    ]);
+}
+
+function ask_assign_docente_student_to_course(int $docenteId, int $cursoId, int $alumnoId): int
+{
+    $stmt = ask_db_connection()->prepare(
+        'INSERT INTO docente_curso_alumnos (docente_id, curso_id, alumno_id, activo)
+         VALUES (:docente_id, :curso_id, :alumno_id, 1)
+         ON DUPLICATE KEY UPDATE activo = VALUES(activo)'
+    );
+
+    $stmt->execute([
+        'docente_id' => $docenteId,
+        'curso_id' => $cursoId,
+        'alumno_id' => $alumnoId,
+    ]);
+
+    return (int) ask_db_connection()->lastInsertId();
+}
+
+function ask_list_admin_docente_table_rows(): array
+{
+     $stmt = ask_db_connection()->query(
+          'SELECT
+                u.id AS docente_id,
+                u.nombre AS docente_nombre,
+                u.login AS docente_login,
+                a.id AS alumno_id,
+                a.nombre AS alumno_nombre,
+                a.cedula AS alumno_cedula,
+                GROUP_CONCAT(DISTINCT c.nombre ORDER BY c.nombre SEPARATOR ", ") AS cursos
+            FROM usuarios u
+            LEFT JOIN docente_alumnos a
+                ON a.docente_id = u.id AND a.activo = 1
+            LEFT JOIN docente_curso_alumnos rel
+                ON rel.docente_id = u.id AND rel.alumno_id = a.id AND rel.activo = 1
+            LEFT JOIN docente_cursos c
+                ON c.id = rel.curso_id AND c.activo = 1
+            WHERE u.rol = "docente" AND u.activo = 1
+            GROUP BY u.id, u.nombre, u.login, a.id, a.nombre, a.cedula
+            ORDER BY u.nombre ASC, a.nombre ASC'
+     );
+
+     return $stmt->fetchAll() ?: [];
+}

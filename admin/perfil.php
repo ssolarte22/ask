@@ -62,19 +62,7 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Plataforma Administrador - Videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuAdmin.html'; ?>
-</nav>
+<?php include 'top_admin.php'; ?>
 
 <section>
     <h2>Perfil del Administrador</h2>

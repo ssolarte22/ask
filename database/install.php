@@ -28,6 +28,25 @@ foreach (array_filter(array_map('trim', explode(';', $schema))) as $sql) {
     }
 }
 
+$pdo->exec('CREATE OR REPLACE VIEW vw_docente_curso_alumnos_detalle AS
+SELECT
+    rel.id,
+    rel.docente_id,
+    u.nombre AS docente_nombre,
+    u.login AS docente_login,
+    rel.curso_id,
+    c.nombre AS curso_nombre,
+    rel.alumno_id,
+    a.nombre AS alumno_nombre,
+    a.cedula AS alumno_cedula,
+    rel.activo,
+    rel.created_at,
+    rel.updated_at
+FROM docente_curso_alumnos rel
+INNER JOIN usuarios u ON u.id = rel.docente_id
+INNER JOIN docente_cursos c ON c.id = rel.curso_id
+INNER JOIN docente_alumnos a ON a.id = rel.alumno_id');
+
 $pdo = ask_db_connection();
 
 $pdo->exec('DROP TABLE IF EXISTS progreso_docente');

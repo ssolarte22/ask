@@ -46,6 +46,34 @@
             color: #D4AF37;
             font-weight: bold;
         }
+        .panel-academico {
+            background: #fcfdff;
+            border: none;
+            border-left: 8px solid #D4AF37;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .panel-academico h3 {
+            color: #002244;
+            border-left: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+        .panel-academico p {
+            color: #333;
+        }
+        .panel-academico .btn {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        .dual-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            background: #fcfdff;
+            border: 2px solid #002244;
+            box-shadow: 6px 6px 0px #D4AF37;
+        }
         table {
             border: 2px solid #121212;
         }
@@ -57,22 +85,7 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Plataforma Docente - Videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div class="welcome-box">
-                Bienvenido Profesor: <?php echo htmlspecialchars($_SESSION['docente']); ?>
-            </div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuDocente.html'; ?>
-</nav>
+<?php include 'top_docente.php'; ?>
 
 <section>
     <h2>Guía docente para el uso de IA en la creación de videos</h2>
@@ -81,6 +94,13 @@
         Bienvenido al módulo docente de la plataforma. Este espacio ha sido diseñado para orientar el uso pedagógico 
         de herramientas de inteligencia artificial enfocadas en la creación de contenido audiovisual de alto impacto.
     </p>
+
+    <div class="panel-academico">
+        <h3>Gestión académica</h3>
+        <p>Desde aquí puedes crear tus cursos y registrar estudiantes en cada curso.</p>
+        <a href="cursos.php" class="btn" style="margin-right:10px;">Cursos</a>
+        <a href="estudiantes.php" class="btn">Estudiantes</a>
+    </div>
 
     <div class="tarjeta">
         <h3>Propósito Pedagógico</h3>
@@ -132,8 +152,8 @@
     </table>
 
     <div style="display: flex; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 300px; border: 2px solid #881111; padding: 20px; background: #fffcfc;">
-            <h3 style="color: #881111; border-left-color: #881111;">Problemas Comunes</h3>
+        <div class="dual-panel">
+            <h3 style="color: #002244;">Problemas Comunes</h3>
             <ul class="check-list">
                 <li>Uso de prompts excesivamente vagos.</li>
                 <li>Dependencia técnica sin criterio pedagógico.</li>
@@ -142,7 +162,7 @@
             </ul>
         </div>
 
-        <div style="flex: 1; min-width: 300px; border: 2px solid #002244; padding: 20px; background: #fcfdff;">
+        <div class="dual-panel">
             <h3 style="color: #002244;">Recomendaciones Clave</h3>
             <ul class="check-list">
                 <li>Solicitar siempre la justificación del prompt.</li>
@@ -159,9 +179,6 @@
     <p>Colegio Mayor del Cauca - Todos los derechos reservados © 2026</p>
     <p>📍 Calle 5 # 8-20, Popayán | 📞 (602) 8234567</p>
 </footer>
-
-<?php include '../Api-key/modal-AI.php'; ?>
-<script src="../js/Api.js"></script>
 
 <script>
     const links = document.querySelectorAll("nav a");

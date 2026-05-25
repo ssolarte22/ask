@@ -64,22 +64,12 @@
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
-        <span class="logo-icon">🏛️</span>
-        <div>
-            <h1>Tutor para creación de videos con IA</h1>
-            <p>Innovación, Tecnología y Excelencia</p>
-            <div class="badge-profe">
-                Usuario: <?php echo htmlspecialchars($_SESSION['docente']); ?>
-            </div>
-        </div>
-    </div>
-</header>
-
-<nav>
-    <?php include 'menuDocente.html'; ?>
-</nav>
+<?php
+$tituloPlataforma = 'Tutor para creación de videos con IA';
+$subtituloPlataforma = 'Innovación, Tecnología y Excelencia';
+$badgePlataforma = 'Usuario: ' . ($_SESSION['docente'] ?? '');
+include 'top_docente.php';
+?>
 
 <section>
     <h2>Modelos de construcción de prompts</h2>
